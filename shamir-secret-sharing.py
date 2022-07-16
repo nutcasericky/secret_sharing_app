@@ -70,40 +70,66 @@ def generate_shares(n, m, secret):
 
     return shares
 
+def num2secret(num):
+    string = str(num)
+    # turning the ascii values into original letters
+    i = 0
+    secret = ""
+    while i < len(string):
+        if string[i] == "1":  # a 3 number ascii value
+            secret += chr(int(string[i:i + 3]))
+            i += 3
+        else:  # a 2 number ascii value
+            secret += chr(int(string[i:i + 2]))
+            i += 2
+    return secret
 
+def string2num(string):
+    secret = ""
+    for i in range(len(string)):
+        secret += str(ord(string[i]))
+    secret = int(secret)
+    return secret
+
+def options():
+    print()
+    print("Press 1 to Generate shares")
+    print("Press 2 to Reconstruct secret")
+    print("Press 3 to Quit")
+    return input("What would you like to do: ")
 
 # Driver code
 if __name__ == '__main__':
     # (3,5) sharing scheme
-    t, n = 3, 5
-    user_input = str(input("Key in the secret of length less than 9: ")) # asking user for string input
-    secret = ""
-    for i in range(len(user_input)): # turning the string into ascii values
-        secret += str(ord(user_input[i]))
-    secret = int(secret)
+    quit = False
+    while not quit:
+        user_option = options() # to display out the options + ask for input
+        if user_option == "1":
 
-    print(f'Original Secret: {secret}')
+            # generate shares
+            user_input = str(input("Key in the secret: "))  # asking user for string input
+            secret = string2num(user_input) # converting the string to ascii
+            print(f'Original Secret: {secret}')
+            n = int(input("How many shares do you want to create: "))
+            t = int(input("How many shares do you want for the secret to be restored: "))
+            shares = generate_shares(n, t, secret) # generating the secret
+            print(f'Shares: {", ".join(str(share) for share in shares)}')
 
-    # Phase I: Generation of shares
-    shares = generate_shares(n, t, secret)
-    print(f'Shares: {", ".join(str(share) for share in shares)}')
+        elif user_option == "2":
+            # reconstruction of shares
+            num_of_shares = int(input("how many shares are there: "))
+            pool = [] # a list of shares that are keyed it
+            for i in range(num_of_shares):
+                x = int(input(f"please key in x values of share no {i+1}: "))
+                y = int(input(f"please key in y values of share no {i+1}: "))
+                pool.append((x, y))
+            print(f'Combining shares: {", ".join(str(share) for share in pool)}')
+            print(f'Reconstructed secret: {num2secret(reconstruct(pool))}')
 
-    # Phase II: Secret Reconstruction
-    # Picking t shares randomly for
-    # reconstruction
-    pool = random.sample(shares, t)
-    print(f'Combining shares: {", ".join(str(share) for share in pool)}')
+        elif user_option == "3": # to quit
+            quit = True
+            break
+        else: # input validation
+            print("please type in a number from 1-3")
+            continue
 
-    reconstructed = str(reconstruct(shares))
-    # turning the ascii values into original letters
-    i = 0
-    recon_secret = ""
-    while i < len(reconstructed):
-        if reconstructed[i] == "1": # a 3 number ascii value
-            recon_secret += chr(int(reconstructed[i:i+3]))
-            i += 3
-        else: # a 2 number ascii value
-            recon_secret += chr(int(reconstructed[i:i+2]))
-            i += 2
-
-    print(f'Reconstructed secret: {recon_secret}')

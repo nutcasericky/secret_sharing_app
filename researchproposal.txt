@@ -1,0 +1,37 @@
+requirements:
+
+a.
+RATIONALE: Include a brief synopsis of the background that supports your research problem and explain why this research is important and if applicable, explain any societal impact of your research.
+b.
+RESEARCH QUESTION(S), HYPOTHESIS(ES), ENGINEERING GOAL(S), EXPECTED OUTCOMES: How is this based on the rationale described above?
+c.
+Describe the following in detail:
+• Procedures: Detail all procedures and experimental design including methods for data collection, and when applicable, the source of data used. Describe only your project. Do not include work done by mentor or others. If you will use published surveys, questionnaires or tests, describe how you obtained these, including required permission if applicable.
+• Risk and Safety: Identify any potential risks and safety precautions needed.
+• Data Analysis: Describe the procedures you will use to analyze the data/results.
+d.
+BIBLIOGRAPHY: List major references (e.g. science journal articles, books, internet sites) from your literature review.
+If you plan to use vertebrate animals, one of these references must be an animal care reference.
+
+
+According to a study by IBM, human error is the main cause of 95% of cyber security breaches
+--> https://www.securitymagazine.com/articles/85601-of-successful-security-attacks-are-the-result-of-human-error
+
+bad for companies/business --> loss in customers, customers lose trust in them
+
+bad for individuals --> strangers get access to their personal/confidential data
+--> pretend to be them on social media (catfishing) or use their identifications to access banking systems or company websites
+
+A data breach occurs when a cybercriminal infiltrates a data source and extracts confidential information (including files) from computers and networks.
+https://www.trendmicro.com/vinfo/us/security/news/cyber-attacks/data-breach-101
+
+measures in companies/business to reduce data breaches
+1. restrict access --> different user roles with different levels of access for internal systems
+2. improve general security
+- better architecture, firewalls, VPNs, traffic monitoring and restrictions and routine updates
+3. train ur employees
+- use strong passwords
+- educate them on phishing scams
+https://www.forbes.com/sites/forbesbusinesscouncil/2021/07/30/how-to-prevent-a-data-breach-in-your-company/?sh=1e184bbb18da
+
+
